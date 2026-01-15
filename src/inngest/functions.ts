@@ -2,6 +2,7 @@ import { inngest } from "./client";
 import {createGoogleGenerativeAI} from "@ai-sdk/google"
 import {createOpenAI} from "@ai-sdk/openai"
 import {createAnthropic} from "@ai-sdk/anthropic"
+import * as Sentry from "@sentry/nextjs";
 import {generateText} from "ai"
 
 const google = createGoogleGenerativeAI();
@@ -15,12 +16,19 @@ export const execute = inngest.createFunction(
   
   async ({ event, step }) => {
 
+    Sentry.logger.info('User triggered test log', { log_source: 'sentry_test' })
+
    const {steps: geminiSteps} = await step.ai.wrap(
     "gemini-generate-text" , 
     generateText, {
     model:google("gemini-2.5-flash"),
     system: "You are a helpful assistant.",
-    prompt: "What is 2+2 ?"
+    prompt: "What is 2+2 ?",
+    experimental_telemetry: {
+    isEnabled: true,
+    recordInputs: true,
+    recordOutputs: true,
+  },
    })
 
    const {steps: openaiSteps} = await step.ai.wrap(
@@ -28,7 +36,12 @@ export const execute = inngest.createFunction(
     generateText, {
     model:openai("gpt-4"),
     system: "You are a helpful assistant.",
-    prompt: "What is 2+2 ?"
+    prompt: "What is 2+2 ?",
+    experimental_telemetry: {
+    isEnabled: true,
+    recordInputs: true,
+    recordOutputs: true,
+  },
    })
 
    const {steps: anthropicSteps} = await step.ai.wrap(
@@ -36,7 +49,12 @@ export const execute = inngest.createFunction(
     generateText, {
     model:anthropic("claude-sonnet-4-5"),
     system: "You are a helpful assistant.",
-    prompt: "What is 2+2 ?"
+    prompt: "What is 2+2 ?",
+    experimental_telemetry: {
+    isEnabled: true,
+    recordInputs: true,
+    recordOutputs: true,
+  },
    })
 
    return{
