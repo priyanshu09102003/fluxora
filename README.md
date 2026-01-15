@@ -19,7 +19,7 @@
 <div align="center">
 
   <h2>📝 Brief Overview 📝</h2>
-  <p><strong>FluxorAI</strong> is a <strong>visual workflow automation platform</strong> with <i>drag-and-drop canvas</i>, equipped with multiple <i>AI integrations (OpenAI, Claude, Gemini)<i>, multiple triggers and <i>oauth integrations (eg: g-forms, slack, discord etc)<i>, messaging nodes, background job execution, authentication, subscriptions, and full SaaS features built with Next.js 16 and TypeScript</p>
+  <p><strong>FluxorAI</strong> is a <strong>visual workflow automation platform</strong> with drag-and-drop canvas, equipped with multiple AI integrations (OpenAI, Claude, Gemini), multiple triggers and oauth integrations (eg: g-forms, slack, discord etc), messaging nodes, background job execution, authentication, subscriptions, and full SaaS features built with Next.js 16 and TypeScript</p>
 
   <br/>
   
