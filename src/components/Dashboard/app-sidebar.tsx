@@ -2,6 +2,7 @@
 import {
 
     CreditCardIcon,
+    CrownIcon,
     HistoryIcon,
     KeyIcon,
     LogOutIcon,
@@ -109,6 +110,15 @@ export const AppSidebar = () => {
                         <SidebarMenuButton tooltip="Upgrade to Pro" className="gap-x-4 h-10 px-4" onClick={() => authClient.checkout({ slug: "FluxorAI-PRO"})}>
                             <StarIcon className="h-6 w-6"/>
                             <span>Upgrade to Pro</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                )}
+
+                 {hasActiveSubsription && !isLoading && (
+                    <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="PRO" className="gap-x-4 h-10 px-4 pointer-events-none hover:bg-transparent">
+                            <CrownIcon className="h-6 w-6 text-yellow-500"/>
+                            <span className="bg-gradient-to-r from-yellow-500 to-amber-500 text-white text-xs font-bold px-2 py-1 rounded">PRO</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 )}
