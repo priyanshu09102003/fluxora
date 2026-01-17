@@ -13,4 +13,5 @@ export const workflowsParams = {
     search: parseAsString
     .withDefault("")
     .withOptions({clearOnDefault: true}),
-}
+};
+
