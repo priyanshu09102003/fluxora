@@ -1,7 +1,15 @@
-import { Loader2Icon, PlusIcon, SearchIcon } from "lucide-react";
+import { AlertTriangleIcon, Loader2Icon, PackageOpenIcon, PlusIcon, SearchIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Input } from "../ui/input";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
 
 
 type EntityHeaderProps = {
@@ -167,26 +175,91 @@ interface StateViewProps{
     message?: string;
 }
 
-interface LoadingViewProps extends StateViewProps{
-    entity?:string
-}
+
 
 export const LoadingView = ({
-    entity = "items",
     message,
-} : LoadingViewProps) => {
+} : StateViewProps) => {
     
     return(
         <div className="flex justify-center items-center h-full flex-1 flex-col gap-y-4">
 
-            <Loader2Icon className="size-6 animate-spin text-muted-foreground" />
-            <p className="text-sm text-muted-foreground">
-                {
-                    message || `Loading ${entity}...`
-                }
+            <Loader2Icon className="size-6 animate-spin text-primary" />
+            {!!message && (
+                <p className="text-sm text-muted-foreground">
+                    {message}
 
-            </p>
+                </p>
+            )}
 
         </div>
     )
+}
+
+
+export const ErrorView = ({
+    message,
+} : StateViewProps) => {
+    
+    return(
+        <div className="flex justify-center items-center h-full flex-1 flex-col gap-y-4">
+
+            <AlertTriangleIcon className="size-6 text-primary" />
+            {!!message && (
+                <p className="text-sm text-muted-foreground">
+                    {message}
+
+                </p>
+            )}
+
+        </div>
+    )
+}
+
+interface EmptyViewProps extends StateViewProps{
+    onNew?: () => void;
+}
+
+export const EmptyView = ({
+    message,
+    onNew
+}: EmptyViewProps) => {
+
+    return(
+        <Empty className="border border-dashed bg-white">
+
+            <EmptyHeader>
+                <EmptyMedia variant={"icon"}>
+                    <div className="flex items-center justify-center w-20 h-20">
+                        <PackageOpenIcon className="size-10 text-gray-600"/>
+                    </div>
+                </EmptyMedia>
+            </EmptyHeader>
+
+            <EmptyTitle>
+                No items
+            </EmptyTitle>
+
+            {!!message && (
+
+                <EmptyDescription>
+                    {message}
+                </EmptyDescription>
+            )}
+
+            {
+                !!onNew && (
+                    <EmptyContent>
+                        <Button onClick={onNew}>
+
+                            Add Item
+
+                        </Button>
+                    </EmptyContent>
+                )
+            }
+
+        </Empty>
+    )
+
 }
