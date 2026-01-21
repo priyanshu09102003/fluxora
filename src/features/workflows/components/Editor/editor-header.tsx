@@ -17,7 +17,7 @@ export const EditorSaveButton = ({workflowId} : {workflowId : string}) => {
         <div className='ml-auto'>
 
             <Button size={"sm"} onClick={() => {}} disabled={false}>
-                <SaveIcon className='size-4' />
+                <SaveIcon className='size-4' /> Save
             </Button>
 
         </div>
