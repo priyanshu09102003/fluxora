@@ -133,7 +133,7 @@ export const WorkflowsEmpty = () => {
         <>
             {modal}
             <EmptyView
-            message="No workflows found. Get started by creating a workflow"
+            message="You don't have any active workflows. Get started by creating a workflow"
             onNew={handleCreate}
             />
         
