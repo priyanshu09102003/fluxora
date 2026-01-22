@@ -3,6 +3,8 @@ import {createTRPCRouter, premiumProcedure, protectedProcedure} from "@/trpc/ini
 import {generateSlug} from "random-word-slugs"
 import z from "zod"
 import { PAGINATION } from "../../../config/constants"
+import { NodeType } from "@prisma/client"
+import { Node , Edge } from "@xyflow/react"
 
 //Creating WORKFLOW CRUD
 export const workFlowsRouter = createTRPCRouter({
@@ -12,7 +14,14 @@ export const workFlowsRouter = createTRPCRouter({
         return prisma.workflow.create({
             data:{
                 name: generateSlug(3),
-                userId: ctx.auth.user.id
+                userId: ctx.auth.user.id,
+                nodes: {
+                    create:{
+                        type: NodeType.INITIAL,
+                        position: {x: 0, y:0},
+                        name: NodeType.INITIAL
+                    }
+                }
             }
         })
     }),
@@ -40,13 +49,41 @@ export const workFlowsRouter = createTRPCRouter({
     }),
 
     //Get one Workflow
-    getOne: protectedProcedure.input(z.object({id: z.string()})).query(({ctx , input}) => {
-        return prisma.workflow.findUniqueOrThrow({
+    getOne: protectedProcedure.input(z.object({id: z.string()})).query(async({ctx , input}) => {
+        const workflow = await prisma.workflow.findUniqueOrThrow({
             where:{
                 id: input.id,
                 userId: ctx.auth.user.id
-            }
+            },
+            include: {nodes: true, connections: true}
         })
+
+        //Transforming the server nodes to ReactFlow compatible nodes
+        const nodes: Node[] = workflow.nodes.map((node) => ({
+            id: node.id,
+            type: node.type,
+            position: node.position as {x: number, y:number},
+            data: (node.data as Record<string, unknown>) || {}
+        }))
+
+        //Transforming the server connections to ReactFlow compatible edges
+
+        const edges: Edge[] = workflow.connections.map((connection) => ({
+            id: connection.id,
+            source: connection.fromNodeId,
+            target: connection.toNodeId,
+            sourceHandle: connection.fromOutput,
+            targetHandle: connection.toInput
+        }))
+
+        return {
+            id: workflow.id,
+            name: workflow.name,
+            nodes,
+            edges
+        }
+
+
     }),
 
     //Get All the user's workflows
