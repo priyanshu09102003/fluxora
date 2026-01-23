@@ -64,6 +64,11 @@ export const Editor = ({workflowId}: {workflowId: string}) => {
                 proOptions={{
                     hideAttribution: true
                 }}
+                snapGrid={[10, 10]}
+                snapToGrid
+                selectionOnDrag
+                panOnScroll
+                panOnDrag = {false}
             >
 
                 <Background />
