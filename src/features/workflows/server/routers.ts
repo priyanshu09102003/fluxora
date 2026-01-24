@@ -5,9 +5,27 @@ import z from "zod"
 import { PAGINATION } from "../../../config/constants"
 import { NodeType } from "@prisma/client"
 import { Node , Edge } from "@xyflow/react"
+import { inngest } from "@/inngest/client"
 
 //Creating WORKFLOW CRUD
 export const workFlowsRouter = createTRPCRouter({
+
+    execute: protectedProcedure
+    .input(z.object({id: z.string() }))
+    .mutation(async({input, ctx}) => {
+        const workflow = await prisma.workflow.findUniqueOrThrow({
+            where:{
+                id: input.id,
+                userId: ctx.auth.user.id
+            }
+        })
+
+        await inngest.send({
+            name: "workflows/execute.workflow",
+        })
+
+        return workflow;
+    }),
 
     //CREATE
     create: premiumProcedure.mutation(({ctx}) => {
