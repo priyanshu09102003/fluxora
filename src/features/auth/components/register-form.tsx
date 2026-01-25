@@ -6,15 +6,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {useForm} from "react-hook-form"
 import { toast } from "sonner";
-import {email, z} from "zod"
+import {z} from "zod"
 import { Button } from "@/components/ui/button";
 
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -22,7 +20,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -35,8 +32,8 @@ import { Loader2 } from "lucide-react";
 
 
 const registerSchema = z.object({
-    email: z.email("Please enter a valid email address"),
-    password: z.string().min(1, "Password is required"),
+    email: z.string().email("Please enter a valid email address"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string()
 }).refine((data) => data.password === data.confirmPassword,{
     message: "Passwords don't match",
@@ -61,16 +58,17 @@ export function RegisterForm(){
     const onSubmit = async(values:RegisterFormValues)=>{
         await authClient.signUp.email(
             {
-                name: values.email,
                 email: values.email,
                 password: values.password,
-                callbackURL: "/"
-            },{
+                name: values.email, 
+            },
+            {
                 onSuccess:()=> {
-                    router.push("/");
+                    toast.success("Account created successfully! Redirecting to login");
+                    router.push("/login");
                 },
                 onError: (ctx)=>{
-                    toast.error(ctx.error.message)
+                    toast.error(ctx.error.message || "Failed to create account")
                 }
             }
         )
@@ -156,7 +154,7 @@ export function RegisterForm(){
                                             <FormControl>
                                                 <Input
                                                 type="password"
-                                                placeholder="Enter your Password"
+                                                placeholder="Confirm your Password"
                                                 {...field}
                                                 />
                                             </FormControl>
@@ -182,11 +180,8 @@ export function RegisterForm(){
                                 <div className="text-center text-sm">
                                     Already have an account?{" "}
                                     <Link href="/login" className="underline underline-offset-4">
-
                                         Login
-                                    
                                     </Link>
-
                                 </div>
 
                             </div>

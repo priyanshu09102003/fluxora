@@ -2,7 +2,7 @@ import { inngest } from "./client";
 
 
 
-export const ExecuteWorkflow = inngest.createFunction(
+export const executeWorkflow = inngest.createFunction(
   { id: "execute-workflow" },
   { event: "workflows/execute.workflow" },
   
