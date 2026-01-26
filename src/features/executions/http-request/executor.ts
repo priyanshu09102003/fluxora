@@ -33,7 +33,10 @@ export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
         const options: KyOptions = {method};
 
         if(["POST" , "PUT", "PATCH"].includes(method)){
-            options.body = data.body
+            options.body = data.body;
+            options.headers = {
+                "Content-Type": "application/jsonf"
+            }
         }
 
         const response = await ky(endpoint, options);
