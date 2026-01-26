@@ -2,6 +2,7 @@ import { NonRetriableError } from "inngest";
 import { NodeExecutor } from "../types"
 import ky, {type Options as KyOptions} from "ky"
 import Handlebars from "handlebars"
+import { httpRequestChannel } from "@/inngest/channels/http-request";
 
 
 Handlebars.registerHelper("json" , (context) => {
@@ -22,14 +23,31 @@ export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
     data,
     nodeId, 
     context, 
-    step})=>
+    step,
+    publish
+})=>
+    
 {
 
     //loading state for http-request
 
+    await publish(
+        httpRequestChannel().status({
+            nodeId,
+            status: "loading"
+        }),
+    );
+
 
     if(!data.endpoint){
-        //Error Statte
+        //Error State
+
+        await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "error"
+            }),
+        );
 
         throw new NonRetriableError("HTTP Request Node: No Endpoint Configured")
     }
@@ -37,11 +55,25 @@ export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
     if(!data.method){
         //Error Statte
 
+         await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "error"
+            }),
+        );
+
         throw new NonRetriableError("Method not Configured")
     }
 
     if(!data.variableName){
         //Error Statte
+
+         await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "error"
+            }),
+        );
 
         throw new NonRetriableError("No variable detected")
     }
@@ -88,6 +120,13 @@ export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
     })
 
     //Success state for http-request
+
+     await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "success"
+            }),
+    );
 
 
     return result
