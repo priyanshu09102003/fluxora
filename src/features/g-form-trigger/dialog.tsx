@@ -82,7 +82,7 @@ export const GoogleFormTriggerDialog = ({
                             <li>Copy and paste the script below </li>
                             <li>Replace WEBHOOK_URL with your Webhook URL above </li>
                             <li>Save and click <b>Triggers</b> → <b>Add Triggers</b> </li>
-                            <li>Choose: From form → On form submit → Save </li>
+                            <li>Choose: <b>Select event source:</b> From form → <b>Select event type:</b> On form submit → Save </li>
 
                         </ol>
 
@@ -125,7 +125,7 @@ export const GoogleFormTriggerDialog = ({
 
 
                         <ul className="text-sm text-muted-foreground space-y-1">
-                            <li>
+                            <li className="text-sm">
                                 
                                 <b>{"</>"}Respondent's email: </b>
                                 <br />
@@ -137,7 +137,7 @@ export const GoogleFormTriggerDialog = ({
                                 
                             </li>
 
-                            <li>
+                            <li className="text-sm">
                                 <b>{"</>"} Specific answer: </b>
                                 <br />
                                 <code className="bg-background px-1 py-0.5 rounded">
@@ -147,7 +147,7 @@ export const GoogleFormTriggerDialog = ({
                                 
                             </li>
 
-                            <li>
+                            <li className="text-sm">
                                 <b>{"</>"} All responses as JSON: </b>
                                 <br />
                                 <code className="bg-background px-1 py-0.5 rounded">

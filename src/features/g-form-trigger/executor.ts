@@ -8,7 +8,7 @@ export const googleFormExecutor: NodeExecutor<GoogleFormTriggerData> = async({
     nodeId, context, step ,publish})=>
 {
 
-    //loading state for manual trigger
+    //loading state for google form trigger
     await publish(
         googleFormTriggerChannel().status({
             nodeId,
@@ -18,7 +18,7 @@ export const googleFormExecutor: NodeExecutor<GoogleFormTriggerData> = async({
 
     const result = await step.run("google-form-trigger" , async() => context)
 
-    //Success state for manual trigger
+    //Success state for google form trigger
 
      await publish(
         googleFormTriggerChannel().status({
