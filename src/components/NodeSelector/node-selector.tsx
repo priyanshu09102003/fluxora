@@ -50,8 +50,22 @@ const executionNodes: NodeTypeOption[] = [
     {
         type: NodeType.GEMINI,
         label: "Gemini",
-        description: "Use Google Gemini Model in your workflow",
+        description: "Use Google Gemini's Model in your workflow",
         icon: "/gemini.svg"
+    },
+
+    {
+        type: NodeType.OPENAI,
+        label: "OpenAI",
+        description: "Use OpenAI's Model in your workflow",
+        icon: "/openai.svg"
+    },
+
+    {
+        type: NodeType.ANTHROPIC,
+        label: "Anthropic",
+        description: "Use Anthropic's Model in your workflow",
+        icon: "/anthropic.svg"
     },
 ]
 
