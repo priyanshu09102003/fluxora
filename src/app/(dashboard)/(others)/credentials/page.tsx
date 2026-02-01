@@ -1,4 +1,4 @@
-import { CredentialsContainer, CredentialsList } from "@/features/credentials/components/credentials";
+import { CredentialsContainer, CredentialsError, CredentialsList, CredentialsLoading } from "@/features/credentials/components/credentials";
 import { credentialsParamsLoader } from "@/features/credentials/server/params-loader";
 import { prefetchCredential, prefetchCredentials } from "@/features/credentials/server/prefetch";
 import { requireAuth } from "@/lib/auth-utils";
@@ -20,9 +20,9 @@ const Page = async ({searchParams}:Props) => {
     return (
        <CredentialsContainer>
          <HydrateClient>
-            <ErrorBoundary fallback={<p>Error...</p>}>
+            <ErrorBoundary fallback={<CredentialsError/>}>
 
-                <Suspense fallback={<p>Loading...</p>}>
+                <Suspense fallback={<CredentialsLoading/>}>
 
                     <CredentialsList />
                     
