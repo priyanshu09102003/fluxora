@@ -140,7 +140,7 @@ export const credentialsRouter = createTRPCRouter({
     getByType: protectedProcedure
         .input(
             z.object({
-                type: z.enum(CredentialType)
+                type: z.nativeEnum(CredentialType)
             })
         )
         .query(({input, ctx}) => {

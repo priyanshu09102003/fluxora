@@ -5,6 +5,7 @@ import ky, {type Options as KyOptions} from "ky"
 import Handlebars from "handlebars"
 import { NodeExecutor } from "../../types";
 import { openaiChannel } from "@/inngest/channels/openai";
+import prisma from "@/lib/db";
 
 
 Handlebars.registerHelper("json" , (context) => {
@@ -18,6 +19,7 @@ type OpenAIData = {
     variableName?: string;
     systemPrompt?: string;
     userPrompt?: string;
+    credentialId?: string;
 }
 
 export const openAIExecutor: NodeExecutor<OpenAIData> = async({
@@ -50,6 +52,17 @@ export const openAIExecutor: NodeExecutor<OpenAIData> = async({
         throw new NonRetriableError("OpenAI Node: Variable Name is missing")
     }
 
+     if(!data.credentialId){
+                await publish(
+                    openaiChannel().status({
+                        nodeId,
+                        status: "error",
+                    })
+                )
+        
+                throw new NonRetriableError("OpenAI Node: Credential is required")
+        }
+
     if(!data.userPrompt){
         await publish(
             openaiChannel().status({
@@ -61,7 +74,6 @@ export const openAIExecutor: NodeExecutor<OpenAIData> = async({
         throw new NonRetriableError("OpenAI Node: User Prompt is missing")
     }
 
-    //Throw error if credential is missing
 
 
     const systemPrompt = data.systemPrompt?Handlebars.compile(data.systemPrompt)(context)
@@ -71,12 +83,21 @@ export const openAIExecutor: NodeExecutor<OpenAIData> = async({
 
 
     //FETCH CREDENTIAL USER SELECTED
+        const credential = await step.run("get-credential", () => {
+            return prisma.credential.findUnique({
+                where:{
+                    id: data.credentialId
+                }
+            })
+        })
+    
+        if(!credential){
+            throw new NonRetriableError("Anthropic Node: Credential not found")
+        }
 
-
-    const credentialValue = process.env.OPENAI_API_KEY!
 
     const openAI = createOpenAI({
-        apiKey: credentialValue,
+        apiKey: credential.value,
     })
 
     try {

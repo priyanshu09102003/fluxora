@@ -5,6 +5,7 @@ import ky, {type Options as KyOptions} from "ky"
 import Handlebars from "handlebars"
 import { NodeExecutor } from "../../types";
 import { anthropicChannel } from "@/inngest/channels/anthropic";
+import prisma from "@/lib/db";
 
 
 Handlebars.registerHelper("json" , (context) => {
@@ -18,6 +19,7 @@ type AnthropicData = {
     variableName?: string;
     systemPrompt?: string;
     userPrompt?: string;
+    credentialId?: string
 }
 
 export const AnthropicExecutor: NodeExecutor<AnthropicData> = async({
@@ -50,6 +52,18 @@ export const AnthropicExecutor: NodeExecutor<AnthropicData> = async({
         throw new NonRetriableError("Anthropic Node: Variable Name is missing")
     }
 
+     if(!data.credentialId){
+            await publish(
+                anthropicChannel().status({
+                    nodeId,
+                    status: "error",
+                })
+            )
+    
+            throw new NonRetriableError("Anthropic Node: Credential is required")
+    }
+    
+
     if(!data.userPrompt){
         await publish(
             anthropicChannel().status({
@@ -61,8 +75,6 @@ export const AnthropicExecutor: NodeExecutor<AnthropicData> = async({
         throw new NonRetriableError("Anthropic Node: User Prompt is missing")
     }
 
-    //Throw error if credential is missing
-
 
     const systemPrompt = data.systemPrompt?Handlebars.compile(data.systemPrompt)(context)
     : "You are a helpful assistant. Help me to do ...";
@@ -71,12 +83,22 @@ export const AnthropicExecutor: NodeExecutor<AnthropicData> = async({
 
 
     //FETCH CREDENTIAL USER SELECTED
+    const credential = await step.run("get-credential", () => {
+            return prisma.credential.findUnique({
+                where:{
+                    id: data.credentialId
+                }
+            })
+        })
+    
+        if(!credential){
+            throw new NonRetriableError("Anthropic Node: Credential not found")
+        }
 
 
-    const credentialValue = process.env.ANTHROPIC_API_KEY!
 
     const anthropic = createAnthropic({
-        apiKey: credentialValue,
+        apiKey: credential.value,
     })
 
     try {

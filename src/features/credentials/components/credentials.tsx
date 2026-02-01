@@ -52,14 +52,14 @@ export const CredentialsHeader = ({disabled}: {disabled?:boolean}) => {
 }
 
 export const CredentialsPagiantions = () => {
-    const workflows = useSuspenseCredentials();
+    const credentials = useSuspenseCredentials();
     const [params, setParams] = useCredentialsParams()
 
     return(
         <EntityPagination
-        disabled = {workflows.isFetching}
-        totalPages={workflows.data.totalPages}
-        page = {workflows.data.page}
+        disabled = {credentials.isFetching}
+        totalPages={credentials.data.totalPages}
+        page = {credentials.data.page}
         onPageChange = {(page) => setParams({...params, page})}
          />
     )

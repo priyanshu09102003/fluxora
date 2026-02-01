@@ -16,7 +16,8 @@ import { fetchAnthropicRealtimeToken } from "./actions";
 type AnthropicNodeData = {
     variableName?: string;
     systemPrompt: string;
-    userPrompt: string
+    userPrompt: string;
+    credentialId?: string;
 }
 
 type AnthropicNodeType = Node<AnthropicNodeData>;
