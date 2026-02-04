@@ -52,6 +52,36 @@ export function LoginForm(){
         }
     })
 
+    const signInGithub = async() => {
+        await authClient.signIn.social({
+            provider: "github"
+        }, 
+        {
+            onSuccess:()=>{
+                router.push("/")
+            },
+
+            onError: () => {
+                toast.error("Something went wrong")
+            }
+        })
+    }
+
+    const signInGoogle = async() => {
+        await authClient.signIn.social({
+            provider: "google"
+        }, 
+        {
+            onSuccess:()=>{
+                router.push("/")
+            },
+
+            onError: () => {
+                toast.error("Something went wrong")
+            }
+        })
+    }
+
     const onSubmit = async(values:LoginFormValues)=>{
        await authClient.signIn.email({
         email: values.email,
@@ -93,7 +123,7 @@ export function LoginForm(){
 
                                 <div className="flex flex-col gap-4">
 
-                                    <Button variant="outline" type="button" className="w-full cursor-pointer" disabled={isPending}>
+                                    <Button variant="outline" type="button" className="w-full cursor-pointer" disabled={isPending} onClick={signInGithub}>
 
                                         <Image src="/github.svg" alt="github" width={20} height={20} />
 
@@ -101,7 +131,7 @@ export function LoginForm(){
 
                                     </Button>
 
-                                    <Button variant="outline" type="button" className="w-full cursor-pointer" disabled={isPending}>
+                                    <Button variant="outline" type="button" className="w-full cursor-pointer" disabled={isPending} onClick={signInGoogle}>
 
                                         <Image src="/google.svg" alt="github" width={20} height={20} />
 
