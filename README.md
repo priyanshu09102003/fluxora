@@ -106,7 +106,7 @@ Your session is securely managed with encrypted data stored in Neon PostgreSQL, 
 ## 🎨 Workflow Canvas
 
 <div align="center">
-  <img src="./public/workflow-canvas.png" alt="FluxorAI Workflow Canvas" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/canvas.png" alt="FluxorAI Workflow Canvas" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 The heart of FluxorAI is the **Visual Workflow Canvas**—a powerful drag-and-drop interface built with React Flow that transforms complex automation into intuitive visual flows. The canvas is your command center for creating, editing, and managing workflows with professional-grade tools.
@@ -124,6 +124,10 @@ The **Workflow Builder** provides a comprehensive visual environment for automat
 - **Zoom & Pan Controls**: Smooth canvas navigation with mouse and keyboard shortcuts
 
 ### Node Types
+
+<div align="center">
+  <img src="./public/screenshots/node-types.png" alt="FluxorAI Workflow Canvas" width="100%" style="max-height: 200px; object-fit: cover;">
+</div>
 
 FluxorAI supports multiple node categories for building comprehensive workflows:
 
@@ -165,6 +169,10 @@ Slack Node → Send summary: {{ai.result}}
 ```
 
 ### Workflow Management
+
+<div align="center">
+  <img src="./public/screenshots/w-management.png" alt="FluxorAI Workflow Canvas" width="100%" style="max-height: 200px; object-fit: cover;">
+</div>
 
 The **Workflows Dashboard** provides comprehensive management capabilities:
 
