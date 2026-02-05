@@ -209,22 +209,6 @@ The **Credentials Tab** is your centralized hub for API key management:
 - **No Exposure**: API keys are never exposed in logs, client-side code, or network requests
 - **Secure Retrieval**: Keys are decrypted only during workflow execution in secure server environments
 
-### Integration Credentials
-
-Beyond AI providers, the Credentials section also manages:
-
-**OAuth Tokens**:
-- **Google Forms**: OAuth tokens for accessing your Google Forms
-- **GitHub**: Authentication tokens for GitHub integrations
-- **Stripe**: Webhook signing secrets for payment events
-
-**Webhook URLs**:
-- **Discord**: Webhook URLs for sending messages to Discord channels
-- **Slack**: Incoming webhook URLs for Slack workspace notifications
-
-**API Keys**:
-- **Third-Party Services**: Store API keys for custom HTTP integrations
-- **Custom Webhooks**: Manage authentication tokens for external webhooks
 
 ### Credential Usage
 
