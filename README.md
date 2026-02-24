@@ -11,13 +11,14 @@
   
   <p>
     <a href="#-application-overview">Overview</a> •
+    <a href="#️-tech-stack">Tech Stack</a> •
+    <a href="#️-system-architecture">System Architecture</a> •
     <a href="#-getting-started">Getting Started</a> •
     <a href="#-workflow-canvas">Workflow Canvas</a> •
     <a href="#-ai-integrations">AI Integrations</a> •
     <a href="#-trigger-nodes">Trigger Nodes</a> •
     <a href="#-messaging-integrations">Messaging</a> •
-    <a href="#-execution-monitoring">Execution Monitoring</a> •
-    <a href="#️-tech-stack">Tech Stack</a>
+    <a href="#-execution-monitoring">Execution Monitoring</a> 
   </p>
 </div>
 
@@ -44,6 +45,378 @@
 
 Built for developers, entrepreneurs, and teams seeking to automate complex workflows without writing code, while maintaining enterprise-grade security and scalability.
 
+---
+
+## ⚙️ Tech Stack
+
+FluxorAI is built with cutting-edge technologies to deliver a fast, reliable, and scalable workflow automation platform.
+
+### Core Framework & Language
+
+<table>
+<tr>
+<td width="50%">
+
+**Next.js 15**
+
+The latest version of the React framework for building full-stack web applications. It provides server-side rendering, App Router architecture, server components, and API routes, enabling developers to create optimized and scalable apps with excellent performance and SEO.
+
+</td>
+<td width="50%">
+
+**TypeScript**
+
+A statically typed superset of JavaScript that improves code quality, developer experience, and error detection. TypeScript is essential for building large-scale applications, providing auto-completion, type checking, and enhanced maintainability across the entire codebase.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Authentication & Database
+
+<table>
+<tr>
+<td width="50%">
+
+**Better Auth**
+
+A modern, framework-agnostic authentication library for TypeScript. It provides built-in support for email/password login, social sign-on (GitHub, Google), session management, and role-based access control, simplifying user authentication and account management with type-safe APIs.
+
+</td>
+<td width="50%">
+
+**Neon PostgreSQL**
+
+A serverless Postgres platform that provides instant provisioning, autoscaling, and branching. Neon offers excellent performance with separation of compute and storage, making it ideal for modern applications requiring scalable, reliable database infrastructure.
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+
+**Prisma ORM**
+
+A next-generation ORM that provides type-safe database access with auto-generated TypeScript types. Prisma simplifies database operations with an intuitive API, automatic migrations, and excellent developer experience. It ensures type safety from database to application layer.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Workflow Automation & Background Jobs
+
+<table>
+<tr>
+<td width="50%">
+
+**React Flow**
+
+A powerful library for building node-based editors and interactive diagrams. React Flow provides the visual canvas for FluxorAI's drag-and-drop workflow builder, offering features like zoom, pan, minimap, node connections, and custom node rendering with excellent performance.
+
+</td>
+<td width="50%">
+
+**Inngest**
+
+A platform for event-driven workflows and reliable background job execution. Inngest enables durable workflow execution with automatic retries, step functions, and event orchestration. It ensures workflows run reliably even during server failures or restarts.
+
+</td>
+</tr>
+</table>
+
+---
+
+### AI & Integrations
+
+<table>
+<tr>
+<td width="50%">
+
+**OpenAI SDK**
+
+Official TypeScript SDK for OpenAI's API, providing access OpenAI models. Enables text generation, completion, chat, embeddings, and function calling with streaming support and type-safe interfaces.
+
+</td>
+<td width="50%">
+
+**Anthropic AI SDK**
+
+Official SDK for Anthropic's Claude models. Provides access to Claude Sonnet with advanced reasoning capabilities, long context windows, and constitutional AI principles for safe, helpful responses.
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+
+**Google Generative AI**
+
+Google's official SDK for Gemini models. Offers multimodal understanding with Gemini 2.5 Flash Model, enabling text, image, and video processing with state-of-the-art performance and integration with Google's AI ecosystem.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Type Safety & API
+
+<table>
+<tr>
+<td width="50%">
+
+**tRPC**
+
+End-to-end type-safe API framework that eliminates the need for API schemas or code generation. tRPC provides automatic TypeScript types from backend to frontend, ensuring type safety across your entire application with excellent developer experience.
+
+</td>
+<td width="50%">
+
+**TanStack React Query**
+
+Powerful data fetching and state management library. React Query handles caching, background updates, and optimistic updates automatically, making FluxorAI's UI fast and responsive while synchronizing with the backend.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Real-Time Communication
+
+<table>
+<tr>
+<td colspan="2">
+
+**WebSockets**
+
+FluxorAI uses WebSocket connections for real-time workflow execution updates. As workflows run, users see live status changes on the canvas, node-by-node progress, and variable values updating in real-time—providing instant feedback and excellent user experience.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Error Tracking & Monitoring
+
+<table>
+<tr>
+<td width="50%">
+
+**Sentry**
+
+Application monitoring and error tracking platform with AI-powered insights. Sentry captures errors, performance issues, and LLM calls, providing detailed stack traces, breadcrumbs, and AI-suggested fixes to help debug and optimize FluxorAI workflows.
+
+</td>
+<td width="50%">
+
+**Sentry AI Monitoring**
+
+Specialized monitoring for AI/LLM applications. Tracks all AI API calls, token usage, latency, costs, and errors across OpenAI, Anthropic, and Google. Provides insights into AI performance and helps optimize prompt engineering and model selection.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Payment & Subscriptions
+
+<table>
+<tr>
+<td colspan="2">
+
+**Polar**
+
+Modern payment and subscription infrastructure for SaaS businesses. Polar integrates with FluxorAI to handle recurring billing, usage tracking, invoice generation, and customer portal management, enabling FluxorAI's full monetization capabilities with minimal development effort.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Security
+
+<table>
+<tr>
+<td colspan="2">
+
+**Cryptr**
+
+Encryption library for securing sensitive data like API keys and credentials. Cryptr ensures all user-provided AI provider keys, webhook URLs, and OAuth tokens are encrypted at rest in the database, maintaining security and compliance.
+
+</td>
+</tr>
+</table>
+
+---
+
+### UI & Styling
+
+<table>
+<tr>
+<td width="50%">
+
+**Shadcn UI**
+
+A collection of beautifully designed, accessible, and customizable React components built on Radix UI. Shadcn provides FluxorAI's polished interface with components like dialogs, dropdowns, forms, and tables—all fully customizable with TailwindCSS.
+
+</td>
+<td width="50%">
+
+**TailwindCSS**
+
+A utility-first CSS framework that enables rapid UI development without leaving HTML. Tailwind provides pre-defined classes for layouts, typography, colors, and responsive design, making FluxorAI's interface beautiful, consistent, and maintainable.
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+
+**NeonDB**
+
+A modern icon library providing beautiful, consistent icons for FluxorAI's interface. NeonDB icons are optimized for web performance and offer a cohesive visual language across the entire application.
+
+</td>
+</tr>
+</table>
+
+---
+
+### Developer Tools
+
+<table>
+<tr>
+<td colspan="2">
+
+**CodeRabbit**
+
+AI-powered code review tool that automatically analyzes pull requests. CodeRabbit provides intelligent suggestions, catches potential bugs, enforces coding standards, and improves code quality through automated PR reviews integrated into the development workflow.
+
+</td>
+</tr>
+</table>
+
+
+This powerful, modern technology stack enables FluxorAI to deliver visual workflow automation with enterprise-grade reliability, security, scalability, and performance—all while maintaining excellent developer experience and type safety throughout the entire application.
+
+---
+
+## System Architecture
+
+```mermaid
+flowchart TD
+    USER(["👤 User / Client"]):::startend
+
+    subgraph FRONTEND["🖥️ Frontend Layer"]
+        NEXTJS["**Next.js 15**<br/>App Router · SSR · RSC"]:::process
+        REACTFLOW["**React Flow Canvas**<br/>Drag & Drop · Minimap<br/>Node Connections"]:::process
+        SHADCN["**Shadcn UI + TailwindCSS**<br/>Component Library"]:::process
+        TANSTACK["**TanStack React Query**<br/>Caching · Optimistic Updates"]:::process
+    end
+
+    subgraph API_LAYER["🔌 API Layer"]
+        TRPC["**tRPC**<br/>End-to-End Type-Safe API"]:::process
+        WS["**WebSockets**<br/>Real-Time Execution Updates"]:::process
+    end
+
+    subgraph AUTH["🔐 Auth & Security"]
+        BETTERAUTH["**Better Auth**<br/>Email · GitHub OAuth · Google OAuth<br/>Session Management"]:::mlmodel
+        CRYPTR["**Cryptr**<br/>API Key Encryption at Rest"]:::mlmodel
+    end
+
+    subgraph DB["🗄️ Database Layer"]
+        NEON["**Neon PostgreSQL**<br/>Serverless · Autoscaling"]:::database
+        PRISMA["**Prisma ORM**<br/>Type-Safe Queries · Migrations"]:::database
+    end
+
+    subgraph TRIGGERS["⚡ Trigger Nodes"]
+        T_WEBHOOK["**Webhook Trigger**<br/>HTTP POST · GET · PUT · DELETE"]:::env
+        T_GFORM["**Google Form Trigger**<br/>Apps Script · OAuth"]:::env
+        T_STRIPE["**Stripe Trigger**<br/>Payment Events · Webhooks"]:::env
+        T_MANUAL["**Manual Trigger**<br/>On-Demand · Debug Mode"]:::env
+    end
+
+    subgraph WORKFLOW_ENGINE["⚙️ Workflow Engine"]
+        INNGEST["**Inngest**<br/>Background Jobs · Durable Execution<br/>Auto-Retry · Step Functions"]:::process
+        EXECUTOR["**Node Executor**<br/>Variable Resolution<br/>Template Engine {{node.output}}"]:::process
+    end
+
+    subgraph AI_NODES["🤖 AI Integrations"]
+        OPENAI["**OpenAI Node**<br/>GPT-4 · Completions · Embeddings"]:::mlmodel
+        CLAUDE["**Anthropic Claude**<br/>Sonnet · Long Context · Reasoning"]:::mlmodel
+        GEMINI["**Google Gemini**<br/>2.5 Flash · Multimodal"]:::mlmodel
+    end
+
+    subgraph MESSAGING["💬 Messaging Nodes"]
+        DISCORD["**Discord Node**<br/>Webhooks · Rich Embeds · Mentions"]:::env
+        SLACK["**Slack Node**<br/>Incoming Webhooks · Block Kit"]:::env
+    end
+
+    subgraph PAYMENTS["💳 Payments & Billing"]
+        POLAR["**Polar**<br/>Subscriptions · Invoicing<br/>Global Tax · Recurring Billing"]:::database
+        TRIAL["**Free Trial System**<br/>30-Day PRO Access<br/>No Card Required"]:::database
+    end
+
+    subgraph MONITORING["📊 Monitoring & Observability"]
+        SENTRY["**Sentry**<br/>Error Tracking · Stack Traces<br/>Breadcrumbs"]:::mlmodel
+        SENTRY_AI["**Sentry AI Monitoring**<br/>LLM Call Tracking · Token Usage<br/>Cost Attribution · Latency"]:::mlmodel
+        CODERABBIT["**CodeRabbit**<br/>AI PR Reviews · Code Quality"]:::mlmodel
+    end
+
+    USER -->|"HTTPS Requests"| NEXTJS
+    NEXTJS --> REACTFLOW
+    NEXTJS --> SHADCN
+    NEXTJS --> TANSTACK
+    TANSTACK <-->|"Type-Safe Calls"| TRPC
+    NEXTJS <-->|"Live Updates"| WS
+
+    TRPC --> BETTERAUTH
+    TRPC --> PRISMA
+    BETTERAUTH --> NEON
+    PRISMA --> NEON
+    CRYPTR -->|"Encrypt / Decrypt Credentials"| NEON
+
+    T_WEBHOOK -->|"Trigger Event"| INNGEST
+    T_GFORM -->|"Form Submission"| INNGEST
+    T_STRIPE -->|"Payment Event"| INNGEST
+    T_MANUAL -->|"Manual Start"| INNGEST
+
+    INNGEST --> EXECUTOR
+    EXECUTOR --> OPENAI
+    EXECUTOR --> CLAUDE
+    EXECUTOR --> GEMINI
+    EXECUTOR --> DISCORD
+    EXECUTOR --> SLACK
+    EXECUTOR -->|"Store Results"| NEON
+    EXECUTOR -->|"Real-Time Status"| WS
+
+    OPENAI -->|"AI Response"| EXECUTOR
+    CLAUDE -->|"AI Response"| EXECUTOR
+    GEMINI -->|"AI Response"| EXECUTOR
+
+    TRPC --> POLAR
+    POLAR --> TRIAL
+
+    INNGEST -->|"Errors & Traces"| SENTRY
+    OPENAI -->|"LLM Calls"| SENTRY_AI
+    CLAUDE -->|"LLM Calls"| SENTRY_AI
+    GEMINI -->|"LLM Calls"| SENTRY_AI
+
+    WS -->|"Canvas Animations<br/>Node Status · Variables"| REACTFLOW
+
+    classDef startend fill:#1a7a1a,stroke:#4caf50,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef database fill:#7b2d8b,stroke:#ce93d8,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef mlmodel fill:#c62828,stroke:#ef9a9a,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef process fill:#1565c0,stroke:#90caf9,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef decision fill:#e65100,stroke:#ffcc02,stroke-width:3px,color:#ffffff,font-weight:bold
+    classDef result fill:#2e7d32,stroke:#a5d6a7,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef env fill:#4527a0,stroke:#ce93d8,stroke-width:2px,color:#ffffff,font-weight:bold
+```
 ---
 
 ## 🚀 Getting Started
@@ -872,297 +1245,6 @@ With FluxorAI's comprehensive payment integration powered by Polar, you get tran
 
 ---
 
-## ⚙️ Tech Stack
-
-FluxorAI is built with cutting-edge technologies to deliver a fast, reliable, and scalable workflow automation platform.
-
-### Core Framework & Language
-
-<table>
-<tr>
-<td width="50%">
-
-**Next.js 15**
-
-The latest version of the React framework for building full-stack web applications. It provides server-side rendering, App Router architecture, server components, and API routes, enabling developers to create optimized and scalable apps with excellent performance and SEO.
-
-</td>
-<td width="50%">
-
-**TypeScript**
-
-A statically typed superset of JavaScript that improves code quality, developer experience, and error detection. TypeScript is essential for building large-scale applications, providing auto-completion, type checking, and enhanced maintainability across the entire codebase.
-
-</td>
-</tr>
-</table>
-
----
-
-### Authentication & Database
-
-<table>
-<tr>
-<td width="50%">
-
-**Better Auth**
-
-A modern, framework-agnostic authentication library for TypeScript. It provides built-in support for email/password login, social sign-on (GitHub, Google), session management, and role-based access control, simplifying user authentication and account management with type-safe APIs.
-
-</td>
-<td width="50%">
-
-**Neon PostgreSQL**
-
-A serverless Postgres platform that provides instant provisioning, autoscaling, and branching. Neon offers excellent performance with separation of compute and storage, making it ideal for modern applications requiring scalable, reliable database infrastructure.
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
-**Prisma ORM**
-
-A next-generation ORM that provides type-safe database access with auto-generated TypeScript types. Prisma simplifies database operations with an intuitive API, automatic migrations, and excellent developer experience. It ensures type safety from database to application layer.
-
-</td>
-</tr>
-</table>
-
----
-
-### Workflow Automation & Background Jobs
-
-<table>
-<tr>
-<td width="50%">
-
-**React Flow**
-
-A powerful library for building node-based editors and interactive diagrams. React Flow provides the visual canvas for FluxorAI's drag-and-drop workflow builder, offering features like zoom, pan, minimap, node connections, and custom node rendering with excellent performance.
-
-</td>
-<td width="50%">
-
-**Inngest**
-
-A platform for event-driven workflows and reliable background job execution. Inngest enables durable workflow execution with automatic retries, step functions, and event orchestration. It ensures workflows run reliably even during server failures or restarts.
-
-</td>
-</tr>
-</table>
-
----
-
-### AI & Integrations
-
-<table>
-<tr>
-<td width="50%">
-
-**OpenAI SDK**
-
-Official TypeScript SDK for OpenAI's API, providing access OpenAI models. Enables text generation, completion, chat, embeddings, and function calling with streaming support and type-safe interfaces.
-
-</td>
-<td width="50%">
-
-**Anthropic AI SDK**
-
-Official SDK for Anthropic's Claude models. Provides access to Claude Sonnet with advanced reasoning capabilities, long context windows, and constitutional AI principles for safe, helpful responses.
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
-**Google Generative AI**
-
-Google's official SDK for Gemini models. Offers multimodal understanding with Gemini 2.5 Flash Model, enabling text, image, and video processing with state-of-the-art performance and integration with Google's AI ecosystem.
-
-</td>
-</tr>
-</table>
-
----
-
-### Type Safety & API
-
-<table>
-<tr>
-<td width="50%">
-
-**tRPC**
-
-End-to-end type-safe API framework that eliminates the need for API schemas or code generation. tRPC provides automatic TypeScript types from backend to frontend, ensuring type safety across your entire application with excellent developer experience.
-
-</td>
-<td width="50%">
-
-**TanStack React Query**
-
-Powerful data fetching and state management library. React Query handles caching, background updates, and optimistic updates automatically, making FluxorAI's UI fast and responsive while synchronizing with the backend.
-
-</td>
-</tr>
-</table>
-
----
-
-### Real-Time Communication
-
-<table>
-<tr>
-<td colspan="2">
-
-**WebSockets**
-
-FluxorAI uses WebSocket connections for real-time workflow execution updates. As workflows run, users see live status changes on the canvas, node-by-node progress, and variable values updating in real-time—providing instant feedback and excellent user experience.
-
-</td>
-</tr>
-</table>
-
----
-
-### Error Tracking & Monitoring
-
-<table>
-<tr>
-<td width="50%">
-
-**Sentry**
-
-Application monitoring and error tracking platform with AI-powered insights. Sentry captures errors, performance issues, and LLM calls, providing detailed stack traces, breadcrumbs, and AI-suggested fixes to help debug and optimize FluxorAI workflows.
-
-</td>
-<td width="50%">
-
-**Sentry AI Monitoring**
-
-Specialized monitoring for AI/LLM applications. Tracks all AI API calls, token usage, latency, costs, and errors across OpenAI, Anthropic, and Google. Provides insights into AI performance and helps optimize prompt engineering and model selection.
-
-</td>
-</tr>
-</table>
-
----
-
-### Payment & Subscriptions
-
-<table>
-<tr>
-<td colspan="2">
-
-**Polar**
-
-Modern payment and subscription infrastructure for SaaS businesses. Polar integrates with FluxorAI to handle recurring billing, usage tracking, invoice generation, and customer portal management, enabling FluxorAI's full monetization capabilities with minimal development effort.
-
-</td>
-</tr>
-</table>
-
----
-
-### Security
-
-<table>
-<tr>
-<td colspan="2">
-
-**Cryptr**
-
-Encryption library for securing sensitive data like API keys and credentials. Cryptr ensures all user-provided AI provider keys, webhook URLs, and OAuth tokens are encrypted at rest in the database, maintaining security and compliance.
-
-</td>
-</tr>
-</table>
-
----
-
-### UI & Styling
-
-<table>
-<tr>
-<td width="50%">
-
-**Shadcn UI**
-
-A collection of beautifully designed, accessible, and customizable React components built on Radix UI. Shadcn provides FluxorAI's polished interface with components like dialogs, dropdowns, forms, and tables—all fully customizable with TailwindCSS.
-
-</td>
-<td width="50%">
-
-**TailwindCSS**
-
-A utility-first CSS framework that enables rapid UI development without leaving HTML. Tailwind provides pre-defined classes for layouts, typography, colors, and responsive design, making FluxorAI's interface beautiful, consistent, and maintainable.
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
-**NeonDB**
-
-A modern icon library providing beautiful, consistent icons for FluxorAI's interface. NeonDB icons are optimized for web performance and offer a cohesive visual language across the entire application.
-
-</td>
-</tr>
-</table>
-
----
-
-### Developer Tools
-
-<table>
-<tr>
-<td colspan="2">
-
-**CodeRabbit**
-
-AI-powered code review tool that automatically analyzes pull requests. CodeRabbit provides intelligent suggestions, catches potential bugs, enforces coding standards, and improves code quality through automated PR reviews integrated into the development workflow.
-
-</td>
-</tr>
-</table>
-
----
-
-### Architecture Overview
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    FluxorAI Platform                         │
-├─────────────────────────────────────────────────────────────┤
-│  Frontend: Next.js 15 + TypeScript + React Flow             │
-│  UI: TailwindCSS + Shadcn UI                                │
-├─────────────────────────────────────────────────────────────┤
-│  API Layer: tRPC + TanStack React Query                     │
-├─────────────────────────────────────────────────────────────┤
-│  Authentication: Better Auth (GitHub, Google, Email)         │
-├─────────────────────────────────────────────────────────────┤
-│  Workflow Engine: Inngest + WebSockets                      │
-├─────────────────────────────────────────────────────────────┤
-│  AI Integrations: OpenAI + Anthropic + Google Gemini        │
-├─────────────────────────────────────────────────────────────┤
-│  Messaging: Discord Webhooks + Slack Webhooks               │
-├─────────────────────────────────────────────────────────────┤
-│  Triggers: Webhooks + Google Forms + Stripe + Manual        │
-├─────────────────────────────────────────────────────────────┤
-│  Payments: Polar + Stripe                                   │
-├─────────────────────────────────────────────────────────────┤
-│  Database: Neon PostgreSQL + Prisma ORM                     │
-├─────────────────────────────────────────────────────────────┤
-│  Security: Cryptr (encryption) + Better Auth                │
-├─────────────────────────────────────────────────────────────┤
-│  Monitoring: Sentry + Sentry AI Monitoring                  │
-├─────────────────────────────────────────────────────────────┤
-│  DevOps: CodeRabbit (AI code reviews)                       │
-└─────────────────────────────────────────────────────────────┘
-```
-
-This powerful, modern technology stack enables FluxorAI to deliver visual workflow automation with enterprise-grade reliability, security, scalability, and performance—all while maintaining excellent developer experience and type safety throughout the entire application.
-
----
 
 ## 📧 Contact the Developer: 
 
